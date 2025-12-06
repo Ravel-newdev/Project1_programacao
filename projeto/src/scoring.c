@@ -177,7 +177,11 @@ void mostrarPlacar(Player jogadores[], int total_elementos) {
     for (classif = 0; classif < total_elementos; classif++) {
         competidor_atual = &jogadores[classif];
 
+<<<<<<< HEAD
         /* saída com variáveis não-padrão (classif + 1)*/
+=======
+        // saída com variáveis não-padrão
+>>>>>>> 94a10fc (Corrigindo comentarios)
         printf(" -> %2dº Lugar: %-20s (Total Acumulado: %3d | Tempo: %.2f segundos)\n",
                classif + 1,
                competidor_atual->nome,
