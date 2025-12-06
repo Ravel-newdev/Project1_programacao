@@ -15,7 +15,7 @@ all: $(BUILD_DIR) $(TARGET)
 # regra para criar o diretório de build
 # o comando mkdir -p garante que o diretório seja criado apenas se não existir
 $(BUILD_DIR):
-    mkdir -p $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
