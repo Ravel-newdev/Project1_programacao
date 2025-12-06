@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,20 +5,19 @@
 #include <time.h>
 #include "../include/utils.h"
 
-//inicializa a semente do rand baseada no relógio
+/*inicializa a semente do rand baseada no relógio */
 void setupRandom() {
     srand((unsigned int)time(NULL));
 }
 
-//retorna int entre [min, max]
+/*retorna int entre [min, max] */
 int sortearNumero(int min, int max) {
+    int range = max - min + 1; /*formula alternativa: min + (rand % range) */
     
-    //formula alternativa: min + (rand % range)
-    int range = max - min + 1;
     return min + (rand() % range);
 }
 
-//limpa stdin para evitar "lixo" no próximo input
+/*limpa stdin para evitar "lixo" no próximo input */
 void flushStdin() {
     int ch;
     do {
@@ -29,14 +26,14 @@ void flushStdin() {
 }
 
 
-//remove o '\n' final usando strcspn da string.h
+/*remove o '\n' final usando strcspn da string.h */
 void removeNewline(char *buffer) {
     if (buffer) {
         buffer[strcspn(buffer, "\n")] = 0;
     }
 }
 
-//converte string in-place para uppercase
+/*converte string in-place para uppercase */
 void toUpperCase(char *s) {
     while (*s) {
         *s = toupper((unsigned char)*s);
@@ -44,20 +41,20 @@ void toUpperCase(char *s) {
     }
 }
 
-//verifica espaços na string para nomes simples
+/*verifica espaços na string para nomes simples */
 int temEspaco(const char *s) {
 
-    //retorna 1 (true) se encontrar espaço
+    /*retorna 1 (true) se encontrar espaço */
     return (strchr(s, ' ') != NULL);
 }
 
 
-// ver se uma string começa com um caractere específico, case-insensitive
+/* ver se uma string começa com um caractere específico, case-insensitive */
 int comecaComLetra(const char *str, char letra) {
     if (!str || *str == '\0') {
-        return 0; // String vazia ou nula
+        return 0; /* String vazia ou nula */
     }
     
-    // compara o primeiro caractere da string (em maiúscula) com a letra (em maiúscula)
+    /* compara o primeiro caractere da string (em maiúscula) com a letra (em maiúscula) */
     return (toupper((unsigned char)*str) == toupper((unsigned char)letra));
 }

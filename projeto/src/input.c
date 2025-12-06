@@ -1,6 +1,3 @@
-void lerNomeValido(char *dest);
-void lerRespostaValida(Player *p, char letra_sorteada);
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -10,13 +7,13 @@ void lerRespostaValida(Player *p, char letra_sorteada);
 #define MAX_NOME 12
 #define MAX_RESPOSTA 30
 
-//função auxiliar segura para remover todos os \n
+/* função auxiliar segura para remover todos os \n */
 void limpar_newline(char *str){
-    int len = strien(str);
+    int len = strlen(str);
     if(len > 0 && str[len-1] == '\n') str[len-1] = "\0";
 }
 
-//verifica o nome pra ter até 12 caracteres
+/* verifica o nome pra ter até 12 caracteres */
 void lerNomeValido(char *dest){
     char buffer[200];
     while (1)
@@ -38,7 +35,7 @@ void lerNomeValido(char *dest){
     }
     
 }
-//trata de nomes compostos para a categoria "pessoa"
+/* trata de nomes compostos para a categoria "pessoa" */
 void nomecomposto(char *str){
     for(int i = 0; str[1]; i++){
         if(str[i] == ' '){
@@ -47,7 +44,7 @@ void nomecomposto(char *str){
         }
     }
 }
-//lê a resposta válida (de começar com a letra sorteada e o tamanho da palavra);
+/* lê a resposta válida (de começar com a letra sorteada e o tamanho da palavra); */
 void lerRespostaValida(Player *p, char letra_sorteada){
     char buffer[300];
 
@@ -61,16 +58,16 @@ void lerRespostaValida(Player *p, char letra_sorteada){
             printf("Resposta vazia, vamos tentar de novo");
             continue;
         if (strlen(buffer) > MAX_RESPOSTA){
-            printf("Resposta muito grande!")
+            printf("Resposta muito grande!");
             continue;
         }
 
-        //a resposta deve começar com a letra sorteada
+        /* a resposta deve começar com a letra sorteada */
         if (toupper(buffer[0]) != toupper(letra_sorteada)) {
             printf("A resposta deve iniciar com '%c'!\n", letra_sorteada);
             continue;
         }
-        //categoria de pessoas precisa ser adequada apenas uma palavra;
+        /* categoria de pessoas precisa ser adequada apenas uma palavra; */
         if(p -> categoria_atual == 0){
             tratarNomePessoa(buffer);
         }
@@ -78,3 +75,4 @@ void lerRespostaValida(Player *p, char letra_sorteada){
         return;
         }
     }
+}
