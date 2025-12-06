@@ -1,8 +1,10 @@
-#include "../include/screen.h"
 #include <stdlib.h>
+#include <time.h>
 
-int main()
+int main(void)
 {
-	limparTela();
-	return EXIT_SUCCESS;
+	/* seed para gerar números pseudo-aletórios */
+	srand(time(NULL));
+
+    return 0;
 }
