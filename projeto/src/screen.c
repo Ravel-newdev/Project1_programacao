@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "../include/screen.h"
 
-// Função responsável por limpar o terminal
+//função responsável por limpar o terminal
 // usando diretivas de pré-processador para identificar o SO
 void limparTela() {
     //verifica se é Windows _WIN32 ou Linux/Unix
@@ -24,4 +24,17 @@ void exibirBannerInicial() {
     printf("* Trabalho Intermediario        *\n");
     printf("****************************************\n");
     printf("\n");
+}
+
+// função responsável por pausar a execução até que o usuário pressione ENTER.
+void pausar() {
+    printf("\nPressione ENTER para continuar...");
+    
+    // verifica se é Windows para usar o comando 'pause' específico.
+    #if defined(_WIN32) || defined(_WIN64)
+        system("pause"); // Comando nativo do Windows
+    #else
+        //para sistemas Unix/Linux, espera por um caractere (\n)
+        getchar();
+    #endif
 }

@@ -31,13 +31,13 @@ void flushStdin() {
 
 //remove o '\n' final usando strcspn da string.h
 //verificando str[len-1]
-void trimNewline(char *buffer) {
+void removeNewline(char *buffer) {
     if (buffer) {
         buffer[strcspn(buffer, "\n")] = 0;
     }
 }
 
-// converte string in-place para uppercase
+//converte string in-place para uppercase
 void toUpperCase(char *s) {
     while (*s) {
         *s = toupper((unsigned char)*s);
@@ -50,4 +50,15 @@ int temEspaco(const char *s) {
 
     //retorna 1 (true) se encontrar espaço
     return (strchr(s, ' ') != NULL);
+}
+
+
+// ver se uma string começa com um caractere específico, case-insensitive
+int comecaComLetra(const char *str, char letra) {
+    if (!str || *str == '\0') {
+        return 0; // String vazia ou nula
+    }
+    
+    // compara o primeiro caractere da string (em maiúscula) com a letra (em maiúscula)
+    return (toupper((unsigned char)*str) == toupper((unsigned char)letra));
 }
