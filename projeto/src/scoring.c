@@ -97,7 +97,6 @@ void calcularPontuacao(Player *listaJogadores, int qtdJogadores) {
         }
 
         // aplica a regra de fração: tamanho / qtd
-        // adiciona 0.5f para fazer o arredondamento comercial corretamente ao castar para int
         float pontuacaoFloat = (float)len / (float)duplicatas;
         int pontosFinais = (int)roundf(pontuacaoFloat); //roundf garante o arredondamento
 
