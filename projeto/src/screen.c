@@ -15,6 +15,7 @@ void limparTela() {
     #endif
 }
 
+
 // banner do jogo
 void exibirBannerInicial() {
     printf("\n");
