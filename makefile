@@ -13,7 +13,7 @@ OBJ := $(patsubst projeto/src/%.c,$(BUILD_DIR)/%.o,$(SRC)) # subsitui o caminho 
 all: $(BUILD_DIR) $(TARGET)
 
 # regra para criar o diretório de build
-# uso if do shell para ser compativel com ambos os sistemas
+# uso if para ser compativel com ambos os sistemas
 $(BUILD_DIR):
 	@if not exist "$(BUILD_DIR)" mkdir "$(BUILD_DIR)"
 
