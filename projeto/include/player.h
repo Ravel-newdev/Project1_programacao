@@ -1,15 +1,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#define MAX_NOME 13     // Até 12 caracteres + '\0'
-#define MAX_RESP 31     // Até 30 caracteres + '\0'
+#define MAX_NOME 13     /* Até 12 caracteres + '\0' */
+#define MAX_RESP 31     /* Até 30 caracteres + '\0' */
 
 typedef struct {
     char nome[MAX_NOME];
     char resposta[MAX_RESP];
     int pontos;
     double tempo_total;
-    int respondeu; // 0 = tempo estourado
+    int respondeu; /* 0 = tempo estourado */
 } Player;
 
 void cadastrarJogadores(Player players[], int *n);
