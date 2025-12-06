@@ -13,9 +13,13 @@ OBJ := $(patsubst projeto/src/%.c,$(BUILD_DIR)/%.o,$(SRC)) # subsitui o caminho 
 all: $(BUILD_DIR) $(TARGET)
 
 # regra para criar o diretório de build
-# o comando mkdir -p garante que o diretório seja criado apenas se não existir
+# uso if do shell para ser compativel com ambos os sistemas
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	@if [ "$(OS)" = "Windows_NT" ]; then \
+	    if not exist "$(BUILD_DIR)" mkdir "$(BUILD_DIR)"; \
+	else \
+	    mkdir -p $(BUILD_DIR); \
+	fi
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
