@@ -24,3 +24,17 @@ int getTempoLimite(int totalJogadores, int indiceJogador) {
     //garantia mínima de tempo (defensive programming)
     return (tempo_calculado > 0) ? tempo_calculado : 1;
 }
+
+
+//marca o timestamp atual como início
+void iniciarContagem() {
+    time(&g_start_time);
+}
+
+//retorna delta T em segundos
+double checarTempoGasto() {
+    time_t now;
+    time(&now);
+    // Retorna direto a diferença
+    return difftime(now, g_start_time);
+}
