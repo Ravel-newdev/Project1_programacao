@@ -26,13 +26,13 @@ void exibirBannerInicial() {
     printf("\n");
 }
 
-// função responsável por pausar a execução até que o usuário pressione ENTER.
+// função responsável por pausar a execução até que o usuário pressione enter.
 void pausar() {
     printf("\nPressione ENTER para continuar...");
     
     // verifica se é Windows para usar o comando 'pause' específico.
     #if defined(_WIN32) || defined(_WIN64)
-        system("pause"); // Comando nativo do Windows
+        system("pause"); //comando nativo do Windows
     #else
         //para sistemas Unix/Linux, espera por um caractere (\n)
         getchar();

@@ -8,13 +8,11 @@
 static time_t g_start_time;
 
 
-//calcula o tempo disponível para o jogador.
-//regra: Base (8 + 2N) menos penalidade por ordem (2 * index)
-
+//calcula o tempo disponível para o jogador
 
 int getTempoLimite(int totalJogadores, int indiceJogador) {
     // a logica: (4 + N - index) * 2 evita operações redundantes
-    // mas vamos manter explícito para clareza, mudando a ordem dos fatores
+    //mantendo explícito para clareza, mudando a ordem dos fatores
     int bonus_jogadores = totalJogadores * 2;
     int penalidade_ordem = indiceJogador * 2;
     
