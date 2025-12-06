@@ -15,11 +15,7 @@ all: $(BUILD_DIR) $(TARGET)
 # regra para criar o diretório de build
 # uso if do shell para ser compativel com ambos os sistemas
 $(BUILD_DIR):
-	@if [ "$(OS)" = "Windows_NT" ]; then \
-	    if not exist "$(BUILD_DIR)" mkdir "$(BUILD_DIR)"; \
-	else \
-	    mkdir -p $(BUILD_DIR); \
-	fi
+	@if not exist "$(BUILD_DIR)" mkdir "$(BUILD_DIR)"
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
