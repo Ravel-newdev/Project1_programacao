@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 void limparEntrada(void) {
     int c;
@@ -69,5 +70,19 @@ void cadastrarJogadores(Player *players, int *n)
                 strcpy(players[i].nome, bufferNome);
             }
 		}
+	}
+}
+
+void sortearOrdem(Player players[], int n)
+{
+	Player tmp;
+	int i, idx;
+
+	for (i = n - 1; i > 0; i--) {
+		idx = rand() % (i + 1);
+
+		tmp = players[i];
+		players[i] = players[idx];
+		players[idx] = tmp;
 	}
 }
