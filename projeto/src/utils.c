@@ -30,7 +30,6 @@ void flushStdin() {
 
 
 //remove o '\n' final usando strcspn da string.h
-//verificando str[len-1]
 void removeNewline(char *buffer) {
     if (buffer) {
         buffer[strcspn(buffer, "\n")] = 0;
