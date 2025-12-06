@@ -60,7 +60,7 @@ void iniciar_jogo() {
     for (int i = 0; i < n; i++) {
         printf("\nJogador %d:\n", i+1);
         lerNomeValido(jogadores[i].nome);
-        jogadores[i].pontuacao = 0;
+        jogadores[i].pontuacao_total = 0;
         jogadores[i].tempo_total = 0;
     }
 
