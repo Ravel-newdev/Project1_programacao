@@ -9,8 +9,7 @@ static time_t g_start_time;
 
 
 //calcula o tempo disponível para o jogador.
-//regra: Base (8 + 2N) menos penalidade por ordem (2 * index).
-//requisito 5 e 21.
+//regra: Base (8 + 2N) menos penalidade por ordem (2 * index)
 
 
 int getTempoLimite(int totalJogadores, int indiceJogador) {
@@ -35,6 +34,6 @@ void iniciarContagem() {
 double checarTempoGasto() {
     time_t now;
     time(&now);
-    // Retorna direto a diferença
+    // retorna direto a diferença
     return difftime(now, g_start_time);
 }

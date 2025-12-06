@@ -3,7 +3,13 @@
 
 #include <time.h>
 
-double tempoLimiteParaJogador(int posicao, int total_jogadores);
-double medirTempoResposta();
+// calcula e retorna o tempo limite do jogador em segundos
+int getTempoLimite(int posicao, int total_jogadores);
+
+//marca como ponto de inicio da contagem
+void iniciarContagem();
+
+//calcula e retorna o tempo em segundos (flutuante), desde a ultima chamada de iniciarContagem()
+double checarTempoGasto();
 
 #endif
