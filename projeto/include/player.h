@@ -8,6 +8,7 @@ typedef struct {
     char nome[MAX_NOME];
     char resposta[MAX_RESP];
     int pontos;
+    int pontuacao_total;
     double tempo_total;
     int respondeu; /* 0 = tempo estourado */
 } Player;
