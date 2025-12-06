@@ -4,11 +4,18 @@ CC = gcc
 # flags pro compilador agir como a máquina pré-histórica que o migs quer
 CFLAGS = -ansi -pedantic -Wall -Wextra
 
-TARGET = projeto/build/jogo
+BUILD_DIR = projeto/build
+TARGET = $(BUILD_DIR)/jogo
 SRC := $(wildcard projeto/src/*.c)
-OBJ := $(patsubst projeto/src/%.c,projeto/build/%.o,$(SRC)) # subsitui o caminho do arquivo .o para build
+OBJ := $(patsubst projeto/src/%.c,$(BUILD_DIR)/%.o,$(SRC)) # subsitui o caminho do arquivo .o para build
 
-all: $(TARGET)
+# adiciona $(BUILD_DIR) como dependência para garantir que a pasta exista
+all: $(BUILD_DIR) $(TARGET)
+
+# regra para criar o diretório de build
+# o comando mkdir -p garante que o diretório seja criado apenas se não existir
+$(BUILD_DIR):
+    mkdir -p $(BUILD_DIR)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
@@ -16,6 +23,7 @@ $(TARGET): $(OBJ)
 # regra que de fato compila os .o e direciona para /build
 projeto/build/%.o: projeto/src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
 	rm -f $(TARGET) $(OBJ)
