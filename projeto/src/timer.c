@@ -21,6 +21,6 @@ int getTempoLimite(int totalJogadores, int indiceJogador) {
     
     int tempo_calculado = 8 + bonus_jogadores - penalidade_ordem;
 
-    // Garantia mínima de tempo (defensive programming)
+    //garantia mínima de tempo (defensive programming)
     return (tempo_calculado > 0) ? tempo_calculado : 1;
 }
