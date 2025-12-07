@@ -82,16 +82,18 @@ void calcularPontuacao(Player *players, int n_jogadores, Categoria cat) {
         respAtual = players[i].resposta;
         len = strlen(respAtual);
 
-        /* se não respondeu, ignora */
+        players[i].pontos = 0; // Pontos na rodada atual
+        players[i].pontos_rodada[cat] = 0; // Pontos na categoria atual
+
+        /* se não respondeu (len == 0), continua para o próximo jogador. */
         if (len == 0) {
-            players[i].pontos = 0;
             continue;
         }
 
         /* conta quantas pessoas deram exatamente a mesma resposta, case insensitive */
         duplicatas = 0;
         for (k = 0; k < n_jogadores; k++) {
-            if (stringsIguais(respAtual, players[k].resposta)) {
+            if (strlen(players[k].resposta) > 0 && stringsIguais(respAtual, players[k].resposta)) {
                 duplicatas++;
             }
         }
@@ -180,13 +182,12 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
 
         printf("%-15s", p->nome);
 
-        int total = 0; // total parcial das rodada já jogadas
+        
         for (j = 0; j < rodada; j++) {
             printf(" | %15d", p->pontos_rodada[j]);
-            total += p->pontos_rodada[j];
         }
 
-        printf(" | %5d\n", total);
+        printf(" | %5d\n", p->pontuacao_total);
     }
 
     printf("\n");

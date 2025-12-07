@@ -19,6 +19,14 @@ int main(void)
     printf("*** JOGO AMEDONHA ***\n\n");
     cadastrarJogadores(players, &n);
 
+    for (int i = 0; i < n; i++) {
+        players[i].pontuacao_total = 0;
+        players[i].pontos = 0;
+        for (int j = 0; j < CAT_TOTAL; j++) {
+            players[i].pontos_rodada[j] = 0;
+        }
+    }
+
     for (int rodada = 0; rodada < CAT_TOTAL; rodada++) {
         printf("===== RODADA %d =====\n", rodada + 1);
         
