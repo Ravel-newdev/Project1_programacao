@@ -11,13 +11,13 @@ const char letras_validas[] = {
 };
 const int total_letras = 23;
 
-/* Sorteia uma letra válida(todas são exceto as que sofrem bullying, K, W, Y) */
+/* sorteia uma letra válida(todas são exceto as que sofrem bullying, K, W, Y) */
 char sorteia_letra() {
     int idx = rand() % total_letras;
     return letras_validas[idx];
 }
 
-/* Sorteia categoria sem repetição */
+/* sorteia categoria sem repetição */
 int sorteia_categoria(int used[]) {
     int cat;
     while (1) {
@@ -29,7 +29,7 @@ int sorteia_categoria(int used[]) {
     }
 }
 
-/* Embaralhar jogadores pra n ter erro */
+/* embaralhar jogadores pra n ter erro */
 void embaralha(int order[], int n) {
     int i;
     for (i = n-1; i > 0; i--) {
@@ -62,5 +62,5 @@ void iniciar_jogo() {
 
     printf("\nJogadores registrados com sucesso!\n");
 
-    /* As próximas partes (rodadas, pontuação, tempo) serão implementadas depois eu juro. */
+    
 }
