@@ -72,25 +72,25 @@ static void ordenarPlacar(Player *lista, int n_elementos) {
 /* calcula pontuação da rodada
  * lógica: pontos = len(palavra) / ocorrências(palavra)
  * */
-void calcularPontuacao(Player *listaJogadores, int qtdJogadores) {
+void calcularPontuacao(Player *players, int n_jogadores) {
     int i, k, len, duplicatas, pontosFinais;
     float pontuacaoFloat;
     char *respAtual;
 
-    for (i = 0; i < qtdJogadores; i++) {
-        respAtual = listaJogadores[i].resposta;
+    for (i = 0; i < n_jogadores; i++) {
+        respAtual = players[i].resposta;
         len = strlen(respAtual);
 
         /* se não respondeu, ignora */
         if (len == 0) {
-            listaJogadores[i].pontos = 0;
+            players[i].pontos = 0;
             continue;
         }
 
         /* conta quantas pessoas deram exatamente a mesma resposta, case insensitive */
         duplicatas = 0;
-        for (k = 0; k < qtdJogadores; k++) {
-            if (stringsIguais(respAtual, listaJogadores[k].resposta)) {
+        for (k = 0; k < n_jogadores; k++) {
+            if (stringsIguais(respAtual, players[k].resposta)) {
                 duplicatas++;
             }
         }
@@ -100,8 +100,8 @@ void calcularPontuacao(Player *listaJogadores, int qtdJogadores) {
         pontosFinais = (int)roundf(pontuacaoFloat); /*roundf garante o arredondamento*/
 
         /* atualiza a struct do jogador atual */
-        listaJogadores[i].pontos = pontosFinais;
-        listaJogadores[i].pontuacao_total += pontosFinais;
+        players[i].pontos = pontosFinais;
+        players[i].pontuacao_total += pontosFinais;
     }
 }
 
@@ -153,22 +153,22 @@ void resolverEmpatesPorTempo(Player listaParticipantes[], int numeroParticipante
 }
 
 /* exibe os resultados finais */
-void mostrarPlacar(Player jogadores[], int total_elementos) {
+void mostrarPlacar(Player players[], int n_jogadores) {
     Player *competidor_atual;
     int classif; /*variável para a classificação*/
 
     /* ordena o array pela pontuação final (desempatada) e tempo de resposta
      * é essencial ordenar a lista novamente após resolverEmpatesPorTempo()
      * */
-    ordenarPlacar(jogadores, total_elementos);
+    ordenarPlacar(players, n_jogadores);
 
     printf("\n\n###########################################\n");
     printf("#### RESULTADO GERAL DO JOGO ####\n");
     printf("###########################################\n\n");
     
     /* itera sobre a lista já ordenada e exibe */
-    for (classif = 0; classif < total_elementos; classif++) {
-        competidor_atual = &jogadores[classif];
+    for (classif = 0; classif < n_jogadores; classif++) {
+        competidor_atual = &players[classif];
 
         /* saída com variáveis não-padrão */
         printf(" -> %2dº Lugar: %-20s (Total Acumulado: %3d | Tempo: %.2f segundos)\n",
