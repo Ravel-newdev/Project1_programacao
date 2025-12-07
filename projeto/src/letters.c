@@ -17,5 +17,6 @@ char sortearLetra(int usadas[])
 	}
 
 	indice = rand() % count;
-	return letras[indice];
+	usadas[disponiveis[indice]] = 1;
+	return letras[disponiveis[indice]];
 }

@@ -11,10 +11,10 @@
 #include "../include/letters.h"
 
 void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
-    int usadas_cat[CAT_TOTAL];
+    int usadas_cat[CAT_TOTAL] = {0};
     int ordem[10];
     int i, k, j, tmp, idx;
-    double anterior = 0;
+    
     double limite, inicio, fim, tempo_gasto;
     Categoria cat;
     Player *p;

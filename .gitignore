@@ -1,1 +1,2 @@
 projeto/build/*
+!projeto/build/.gitkeep

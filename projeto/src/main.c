@@ -10,14 +10,12 @@
 
 int main(void)
 {
+    Player players[10];
+    int n;
+    
 	/* seed para gerar números pseudo-aletórios */
 	srand(time(NULL));
-	Player players[10];
-    int n;
-
     cadastrarJogadores(players, &n);
-
-    int usadas_cat[CAT_TOTAL] = {0};
 
     for (int rodada = 0; rodada < CAT_TOTAL; rodada++) {
         limparTela();

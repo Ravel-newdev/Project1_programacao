@@ -1,21 +1,14 @@
 # para saber mais: https://makefiletutorial.com/
 CC = gcc
 
-# flags pro compilador agir como a máquina pré-histórica que o migs quer
-CFLAGS = -std=c99 -pedantic -Wall -Wextra
+# flags pro compilador agir como a máquina (pré-histórica, era com -ansi) que o migs quer
+CFLAGS = -std=c99 -pedantic -Wall -Wextra -lm
 
-BUILD_DIR = projeto/build
-TARGET = $(BUILD_DIR)/jogo
+TARGET = projeto/build/jogo
 SRC := $(wildcard projeto/src/*.c)
-OBJ := $(patsubst projeto/src/%.c,$(BUILD_DIR)/%.o,$(SRC)) # subsitui o caminho do arquivo .o para build
+OBJ := $(patsubst projeto/src/%.c,projeto/build/%.o,$(SRC)) # subsitui o caminho do arquivo .o para build
 
-# adiciona $(BUILD_DIR) como dependência para garantir que a pasta exista
-all: $(BUILD_DIR) $(TARGET)
-
-# regra para criar o diretório de build
-# uso if para ser compativel com ambos os sistemas
-$(BUILD_DIR):
-	@if not exist "$(BUILD_DIR)" mkdir "$(BUILD_DIR)"
+all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
@@ -23,7 +16,6 @@ $(TARGET): $(OBJ)
 # regra que de fato compila os .o e direciona para /build
 projeto/build/%.o: projeto/src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
 
 clean:
 	rm -f $(TARGET) $(OBJ)
