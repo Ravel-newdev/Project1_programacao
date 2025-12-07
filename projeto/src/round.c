@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-#include "round.h"
-#include "categories.h"
-#include "input.h"
-#include "timer.h"
-#include "scoring.h"
-#include "screen.h"
-#include "utils.h"
-#include "letters.h"
+#include "../include/round.h"
+#include "../include/categories.h"
+#include "../include/input.h"
+#include "../include/timer.h"
+#include "../include/scoring.h"
+#include "../include/screen.h"
+#include "../include/utils.h"
+#include "../include/letters.h"
 
 void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     int usadas_cat[CAT_TOTAL];
@@ -54,7 +54,7 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
 
         inicio = medirTempoResposta();  /* pega timestamp inicial */
 
-        lerRespostaValida(p, letra_sorteada);
+        lerRespostaValida(p, letra_sorteada, cat);
 
         fim = medirTempoResposta();
         tempo_gasto = fim - inicio;

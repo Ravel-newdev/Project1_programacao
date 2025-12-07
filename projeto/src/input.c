@@ -5,13 +5,13 @@
 #include "../include/utils.h"
 #include "../include/player.h"
 
-#define MAX_NOME 12
+ /*#define MAX_NOME 12 */
 #define MAX_RESPOSTA 30
 
 /* função auxiliar segura para remover todos os \n */
 void limpar_newline(char *str){
     int len = strlen(str);
-    if(len > 0 && str[len-1] == '\n') str[len-1] = "\0";
+    if(len > 0 && str[len-1] == '\n') str[len-1] = '\0';
 }
 
 /* verifica o nome pra ter até 12 caracteres */
