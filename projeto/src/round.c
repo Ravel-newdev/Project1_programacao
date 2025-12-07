@@ -12,6 +12,8 @@
 void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     int usadas_cat[CAT_TOTAL] = {0};
     int i;
+    int maxNome = 0;
+    int tamanhoNome;
     
     double limite, inicio, fim, tempo_gasto;
     Categoria cat;
@@ -27,6 +29,10 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     printf("A ordem dessa rodada será:\n");
     sortearOrdem(players, n_jogadores);
     for (i = 0; i < n_jogadores; i++) {
+        /* lógica de alinhamento dos nomes, aqui para evitar ficar iterando sem necessidade */
+        tamanhoNome = strlen(players[i].nome);
+        if (tamanhoNome > maxNome) maxNome = tamanhoNome;
+
         printf("  %d. %s\n", i + 1, players[i].nome);
     }
     printf("\n");
@@ -68,6 +74,12 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     calcularPontuacao(players, n_jogadores);
 
     limparTela();
+
+    printf("Jogadas realizadas:\n");
+    for (i = 0; i < n_jogadores; i++) {
+        printf("%-*s: %s\n", maxNome, players[i].nome, players[i].resposta);
+    }
+
     mostrarPlacar(players, n_jogadores);
     pausar();
 }
