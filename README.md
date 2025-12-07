@@ -4,7 +4,7 @@ Composicão da equipe:
 <ul>
     <li></li>
     <li>Arthur Pereira dos Santos - 579364</li>
-    <li></li>
+    <li>Mateus Nascimento da Mota - 571044</li>
 </ul>
 
 Estrutura de pastas e arquivos do projeto
