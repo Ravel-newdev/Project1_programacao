@@ -44,7 +44,7 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
         printf("Letra: %c\n\n", letra_sorteada);
         printf("Agora é a vez de: %s\n", p->nome);
 
-        limite = tempoLimiteParaJogador(k, n_jogadores);
+        limite = getTempoLimite(k, n_jogadores);
 
         printf("Tempo limite: %.1f segundos.\n", limite);
 
@@ -52,11 +52,11 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
         p->resposta[0] = '\0';
         p->respondeu = 1;
 
-        inicio = medirTempoResposta();  /* pega timestamp inicial */
+        inicio = checarTempoGasto();  /* pega timestamp inicial */
 
         lerRespostaValida(p, letra_sorteada, cat);
 
-        fim = medirTempoResposta();
+        fim = checarTempoGasto();
         tempo_gasto = fim - inicio;
 
         if (tempo_gasto > limite) {

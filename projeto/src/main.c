@@ -6,6 +6,8 @@
 #include "../include/letters.h"
 #include "../include/categories.h"
 #include "../include/screen.h"
+#include "../include/scoring.h"
+
 int main(void)
 {
 	/* seed para gerar números pseudo-aletórios */
