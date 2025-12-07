@@ -49,13 +49,13 @@ void tratarNomePessoa(char *nome) {
     if (nome[0] != '\0') {
         nome[0] = toupper((unsigned char)nome[0]);
     }
-    /* Lógica adicional pode ser adicionada aqui. */
+   
 }
 
 /* ver se uma string começa com um caractere específico, case-insensitive */
 int comecaComLetra(const char *str, char letra) {
     if (!str || *str == '\0') {
-        return 0; /* String vazia ou nula */
+        return 0;   /* string vazia ou nula */
     }
     
     /* compara o primeiro caractere da string em maiúscula com a letra em maiúscula */
