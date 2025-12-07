@@ -1,10 +1,8 @@
 #include <time.h>
-#include <stdio.h>
 #include "../include/timer.h"
 
 /* variável estática para controle interno do módulo */
 static time_t g_start_time;
-
 
 /* calcula o tempo disponível para o jogador */
 
@@ -20,7 +18,6 @@ int getTempoLimite(int totalJogadores, int indiceJogador) {
     /*  garantia mínima de tempo (defensive programming) */
     return (tempo_calculado > 0) ? tempo_calculado : 1;
 }
-
 
 /* marca o timestamp atual como início */
 void iniciarContagem() {

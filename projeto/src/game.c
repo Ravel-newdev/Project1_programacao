@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <ctype.h>
 #include "../include/game.h"
 #include "../include/player.h"
 #include "../include/input.h"

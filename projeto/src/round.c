@@ -1,6 +1,6 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include "../include/round.h"
 #include "../include/categories.h"
 #include "../include/input.h"
@@ -8,46 +8,39 @@
 #include "../include/scoring.h"
 #include "../include/screen.h"
 #include "../include/utils.h"
-#include "../include/letters.h"
 
 void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     int usadas_cat[CAT_TOTAL] = {0};
-    int ordem[10];
-    int i, k, j, tmp, idx;
+    int i;
     
     double limite, inicio, fim, tempo_gasto;
     Categoria cat;
     Player *p;
 
-    for (i = 0; i < CAT_TOTAL; i++)
+    for (i = 0; i < CAT_TOTAL; i++) {
         usadas_cat[i] = 0;
-
-    cat = sortearCategoria(usadas_cat);
-
-    for (i = 0; i < n_jogadores; i++)
-        ordem[i] = i;
-
-    /* embaralhar ordem */
-    for (i = 0; i < n_jogadores; i++) {
-        j = rand() % n_jogadores;
-        tmp = ordem[i];
-        ordem[i] = ordem[j];
-        ordem[j] = tmp;
     }
 
-    for (k = 0; k < n_jogadores; k++) {
-        idx = ordem[k];
-        p = &players[idx];
+    cat = sortearCategoria(usadas_cat);
+    printf("A categoria desta rodada é: %s\n", nomeCategoria(cat));
+
+    printf("A ordem dessa rodada será:\n");
+    sortearOrdem(players, n_jogadores);
+    for (i = 0; i < n_jogadores; i++) {
+        printf("  %d. %s\n", i + 1, players[i].nome);
+    }
+    printf("\n");
+
+    esperarEnter();
+
+    for (i = 0; i < n_jogadores; i++) {
+        p = &players[i];
 
         limparTela();
 
-        printf("Categoria: %s\n", nomeCategoria(cat));
-        printf("Letra: %c\n\n", letra_sorteada);
-        printf("Agora é a vez de: %s\n", p->nome);
+        limite = getTempoLimite(i, n_jogadores);
 
-        limite = getTempoLimite(k, n_jogadores);
-
-        printf("Tempo limite: %.1f segundos.\n", limite);
+        printf("%s, você deve entrar um '%s', com a letra '%c' em %d segundos: \n", p->nome, nomeCategoria(cat), toupper(letra_sorteada), (int)limite);
 
         /* Zera para evitar lixo */
         p->resposta[0] = '\0';

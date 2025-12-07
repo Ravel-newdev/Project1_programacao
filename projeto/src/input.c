@@ -46,18 +46,20 @@ void nomecomposto(char *str){
     }
 }
 /* lê a resposta válida (de começar com a letra sorteada e o tamanho da palavra); */
-void lerRespostaValida(Player *p, char letra_sorteada, int idx_categoria){
+void lerRespostaValida(Player *p, char letra_sorteada, int idx_categoria) {
     char buffer[300];
 
     while (1)
     {
-        printf("Sua resposta (max de 30 caracteres)");
+        printf("Sua resposta (max de 30 caracteres): ");
         fgets(buffer, sizeof(buffer), stdin);
         limpar_newline(buffer);
 
-        if(strlen(buffer) == 0){
+        if(strlen(buffer) == 0) {
             printf("Resposta vazia, vamos tentar de novo");
             continue;
+        }
+
         if (strlen(buffer) > MAX_RESPOSTA){
             printf("Resposta muito grande!");
             continue;
@@ -68,12 +70,13 @@ void lerRespostaValida(Player *p, char letra_sorteada, int idx_categoria){
             printf("A resposta deve iniciar com '%c'!\n", letra_sorteada);
             continue;
         }
+
         /* categoria de pessoas precisa ser adequada apenas uma palavra; */
-        if(idx_categoria == 0){
+        if(idx_categoria == 0) {
             tratarNomePessoa(buffer);
         }
+
         strcpy(p -> resposta, buffer);
         return;
-        }
     }
 }

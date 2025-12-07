@@ -11,21 +11,22 @@
 int main(void)
 {
     Player players[10];
+    int usadas[23] = {0};
     int n;
     
 	/* seed para gerar números pseudo-aletórios */
 	srand(time(NULL));
+    printf("*** JOGO AMEDONHA ***\n\n");
     cadastrarJogadores(players, &n);
 
     for (int rodada = 0; rodada < CAT_TOTAL; rodada++) {
-        limparTela();
-
         printf("===== RODADA %d =====\n", rodada + 1);
-
-        char letra = sortearLetra(NULL);  // se quiser controlar repetição, basta enviar vetor
-        printf("Letra sorteada: %c\n", letra);
-
+        
+        char letra = sortearLetra(usadas);
+        printf("A letra dessa rodada é: %c\n", letra);
+        
         jogarRodada(players, n, letra);
+        // limparTela();
 	}
 	// fim do jogo
     limparTela();

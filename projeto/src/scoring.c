@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include "../include/scoring.h"
 #include "../include/player.h" /* dependencia da struct player */
-#include "../include/utils.h" /* funcoes auxiliares */
-
 
 /* comparando strings ignorando case, essa função evita alocação de memória extra,
  * processando caractere a caractere 'in-place'
@@ -22,14 +20,6 @@ static int stringsIguais(const char *s1, const char *s2) {
 
 
 /* funções auxiliares de ordenação */
-
-/* troca o conteúdo de duas structs player na memória. */
-/* nota: essa funçãó é realmente necessária? o swap de ordenarPlacarn já ocorre sem função auxiliar */
-static void trocarJogadores(Player *p1, Player *p2) {
-    Player temp = *p1;
-    *p1 = *p2;
-    *p2 = temp;
-}
 
 /* ordena os jogadores por pontuação total decrescente e tempo crescente para desempate
  * chama a função trocarJogadores internamente.

@@ -25,7 +25,6 @@ void flushStdin() {
     } while (ch != '\n' && ch != EOF);
 }
 
-
 /*remove o '\n' final usando strcspn da string.h */
 void removeNewline(char *buffer) {
     if (buffer) {
@@ -66,4 +65,16 @@ int comecaComLetra(const char *str, char letra) {
     
     /* compara o primeiro caractere da string em maiúscula com a letra em maiúscula */
     return (toupper((unsigned char)*str) == toupper((unsigned char)letra));
+}
+
+void esperarEnter() {
+    int c;
+
+    printf("Tecle [Enter] para iniciar a rodada: ");
+
+    c = getchar();
+
+    if (c != '\n') {
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
 }
