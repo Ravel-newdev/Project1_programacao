@@ -11,12 +11,11 @@
 
 void jogarRodada(Player players[], int n_jogadores, char letra_sorteada, Categoria cat)
 {
-    int i;
-    int maxNome = 0;
-    int tamanhoNome;
-
-    double limite, inicio, fim, tempo_gasto;
     Player *p;
+    double limite, inicio, fim, tempo_gasto;
+    int tamanhoNome;
+    int maxNome = 0;
+    int i;
 
     printf("A categoria desta rodada é: %s\n", nomeCategoria(cat));
 
@@ -46,7 +45,7 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada, Categor
         p->resposta[0] = '\0';
         p->respondeu = 1;
 
-        inicio = checarTempoGasto();  /* pega timestamp inicial */
+        inicio = checarTempoGasto();
 
         lerRespostaValida(p, letra_sorteada, cat);
 
@@ -62,7 +61,6 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada, Categor
         }
     }
 
-    /* Depois que todos responderem → pontuar */
     calcularPontuacao(players, n_jogadores, cat); 
 
     limparTela();

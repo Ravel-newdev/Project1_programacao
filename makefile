@@ -1,7 +1,4 @@
-# para saber mais: https://makefiletutorial.com/
 CC = gcc
-
-# flags pro compilador agir como a máquina (pré-histórica, era com -ansi) que o migs quer
 CFLAGS = -std=c99 -pedantic -Wall -Wextra -lm
 
 TARGET = projeto/build/jogo

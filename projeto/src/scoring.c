@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "../include/scoring.h"
-#include "../include/player.h" /* dependencia da struct player */
+#include "../include/player.h"
 #include "../include/categories.h"
 
 /* comparando strings ignorando case, essa função evita alocação de memória extra,
@@ -19,11 +19,8 @@ static int stringsIguais(const char *s1, const char *s2) {
     return *s1 == *s2;
 }
 
-
 /* funções auxiliar de ordenação */
-
 /* ordena os jogadores por pontuação total decrescente e tempo crescente para desempate */
-
 static void ordenarPlacar(Player *lista, int n_elementos) {
     int i, j;
     
@@ -82,10 +79,11 @@ void calcularPontuacao(Player *players, int n_jogadores, Categoria cat) {
         respAtual = players[i].resposta;
         len = strlen(respAtual);
 
-        players[i].pontos = 0; // Pontos na rodada atual
-        players[i].pontos_rodada[cat] = 0; // Pontos na categoria atual
+        /* zerar valores pra evitar lixo */
+        players[i].pontos = 0;
+        players[i].pontos_rodada[cat] = 0;
 
-        /* se não respondeu (len == 0), continua para o próximo jogador. */
+        /* caso onde não respondeu */
         if (len == 0) {
             continue;
         }
@@ -156,7 +154,6 @@ void resolverEmpatesPorTempo(Player listaParticipantes[], int numeroParticipante
     }
 }
 
-/* exibe os resultados finais */
 void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria ordem_categorias[]) {
     int i, j;
     Categoria cat_atual;
@@ -168,7 +165,7 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria orde
     /* cabeçalho */
     printf("%-17s", "Nome");
     for (i = 0; i < rodada; i++) {
-        // Usa o array de ordem para saber qual categoria foi jogada na rodada 'i'
+        /* Usa o array de ordem para saber qual categoria foi jogada na rodada 'i' */
         cat_atual = ordem_categorias[i]; 
         printf(" | %-15s", nomeCategoria((Categoria)cat_atual));
     }
@@ -176,10 +173,12 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria orde
 
     /* separador  */
     printf("-------------------");
-    for (i = 0; i < rodada; i++) printf("-----------------");
+    for (i = 0; i < rodada; i++) {
+        printf("-----------------");
+    }
     printf("--------\n");
 
-    /* corpo  */
+    /* linhas do placar  */
     for (i = 0; i < n_jogadores; i++) {
         Player *p = &players[i];
 
