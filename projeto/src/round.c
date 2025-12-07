@@ -60,8 +60,6 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada, Categor
         } else {
             p->tempo_total += tempo_gasto;
         }
-
-        pausar();
     }
 
     /* Depois que todos responderem → pontuar */

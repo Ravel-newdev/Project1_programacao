@@ -14,7 +14,7 @@ int main(void)
     Categoria ordem_categorias[CAT_TOTAL];
     int usadas_cat[CAT_TOTAL] = {0};
     int usadas[23] = {0};
-    int n;
+    int rodada, n;
     
 	/* seed para gerar números pseudo-aletórios */
 	srand(time(NULL));
@@ -29,7 +29,9 @@ int main(void)
         }
     }
 
-    for (int rodada = 0; rodada < CAT_TOTAL; rodada++) {
+    for (rodada = 0; rodada < CAT_TOTAL; rodada++) {
+        limparTela();
+
         printf("===== RODADA %d =====\n", rodada + 1);
         
         char letra = sortearLetra(usadas);
@@ -41,14 +43,14 @@ int main(void)
         jogarRodada(players, n, letra, cat_sorteada);
         mostrarPlacar(players, n, rodada + 1, ordem_categorias);
         pausar();
-        // limparTela();
 	}
 
 	// fim do jogo
     limparTela();
-    printf("===== FIM DO JOGO =====\n");
+    printf("RESULTADO FINAL:\n");
     resolverEmpatesPorTempo(players, n);
-    // mostrarPlacar(players, n);
-	
+    mostrarPlacar(players, n, rodada, ordem_categorias);
+	printf("\nO ganhador é: %s\n", players[0].nome);
+
     return 0;
 }

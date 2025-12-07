@@ -166,7 +166,7 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria orde
     printf("\n\n");
 
     /* ===== Cabeçalho ===== */
-    printf("%-15s", "Nome");
+    printf("%-17s", "Nome");
     for (i = 0; i < rodada; i++) {
         // Usa o array de ordem para saber qual categoria foi jogada na rodada 'i'
         cat_atual = ordem_categorias[i]; 
@@ -175,7 +175,7 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria orde
     printf(" | Total\n");
 
     /* ===== Separador ===== */
-    printf("-----------------");
+    printf("-------------------");
     for (i = 0; i < rodada; i++) printf("-----------------");
     printf("--------\n");
 
@@ -183,7 +183,7 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria orde
     for (i = 0; i < n_jogadores; i++) {
         Player *p = &players[i];
 
-        printf("%-15s", p->nome);
+        printf("%-17s", p->nome);
         
         for (j = 0; j < rodada; j++) {
             cat_atual = ordem_categorias[j];
