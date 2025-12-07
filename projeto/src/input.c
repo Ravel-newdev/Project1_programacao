@@ -56,12 +56,12 @@ void lerRespostaValida(Player *p, char letra_sorteada, int idx_categoria) {
         limpar_newline(buffer);
 
         if(strlen(buffer) == 0) {
-            printf("Resposta vazia, vamos tentar de novo");
+            printf("Resposta vazia, vamos tentar de novo\n");
             continue;
         }
 
         if (strlen(buffer) > MAX_RESPOSTA){
-            printf("Resposta muito grande!");
+            printf("Resposta muito grande!\n");
             continue;
         }
 
