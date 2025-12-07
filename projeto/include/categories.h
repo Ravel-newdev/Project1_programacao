@@ -27,6 +27,6 @@ Categoria sortearCategoria(int usadas[]);
  */
 const char* nomeCategoria(Categoria c);
 
-const char* nomeCategoriaPorNumero(int c);
+
 
 #endif
