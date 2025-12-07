@@ -1,5 +1,12 @@
 # Project1_programacao
 
+Composicão da equipe:
+<ul>
+    <li></li>
+    <li>Arthur Pereira dos Santos - 579364</li>
+    <li></li>
+</ul>
+
 Estrutura de pastas e arquivos do projeto
 ```text
 Project1_programacao/
