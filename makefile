@@ -2,7 +2,7 @@
 CC = gcc
 
 # flags pro compilador agir como a máquina pré-histórica que o migs quer
-CFLAGS = -ansi -pedantic -Wall -Wextra
+CFLAGS = -std=c99 -pedantic -Wall -Wextra
 
 BUILD_DIR = projeto/build
 TARGET = $(BUILD_DIR)/jogo
