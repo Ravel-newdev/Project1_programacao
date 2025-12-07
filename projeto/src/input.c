@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "../include/input.h" 
 #include "../include/utils.h"
-#include "player.h"
+#include "../include/player.h"
 
 #define MAX_NOME 12
 #define MAX_RESPOSTA 30
