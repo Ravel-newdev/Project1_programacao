@@ -9,7 +9,7 @@
 #include "../include/screen.h"
 #include "../include/utils.h"
 
-void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
+void jogarRodada(Player players[], int n_jogadores, char letra_sorteada, int rodada) {
     int usadas_cat[CAT_TOTAL] = {0};
     int i;
     int maxNome = 0;
@@ -18,10 +18,6 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     double limite, inicio, fim, tempo_gasto;
     Categoria cat;
     Player *p;
-
-    for (i = 0; i < CAT_TOTAL; i++) {
-        usadas_cat[i] = 0;
-    }
 
     cat = sortearCategoria(usadas_cat);
     printf("A categoria desta rodada é: %s\n", nomeCategoria(cat));
@@ -71,7 +67,7 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
     }
 
     /* Depois que todos responderem → pontuar */
-    calcularPontuacao(players, n_jogadores);
+    calcularPontuacao(players, n_jogadores, cat);
 
     limparTela();
 
@@ -80,6 +76,6 @@ void jogarRodada(Player players[], int n_jogadores, char letra_sorteada) {
         printf("%-*s: %s\n", maxNome, players[i].nome, players[i].resposta);
     }
 
-    mostrarPlacar(players, n_jogadores);
+    mostrarPlacar(players, n_jogadores, rodada + 1);
     pausar();
 }

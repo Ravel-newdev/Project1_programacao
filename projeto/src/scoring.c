@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "../include/scoring.h"
 #include "../include/player.h" /* dependencia da struct player */
+#include "../include/categories.h"
 
 /* comparando strings ignorando case, essa função evita alocação de memória extra,
  * processando caractere a caractere 'in-place'
@@ -72,7 +73,7 @@ static void ordenarPlacar(Player *lista, int n_elementos) {
 /* calcula pontuação da rodada
  * lógica: pontos = len(palavra) / ocorrências(palavra)
  * */
-void calcularPontuacao(Player *players, int n_jogadores) {
+void calcularPontuacao(Player *players, int n_jogadores, Categoria cat) {
     int i, k, len, duplicatas, pontosFinais;
     float pontuacaoFloat;
     char *respAtual;
@@ -100,6 +101,7 @@ void calcularPontuacao(Player *players, int n_jogadores) {
         pontosFinais = (int)roundf(pontuacaoFloat); /*roundf garante o arredondamento*/
 
         /* atualiza a struct do jogador atual */
+        players[i].pontos_rodada[cat] = pontosFinais;
         players[i].pontos = pontosFinais;
         players[i].pontuacao_total += pontosFinais;
     }
@@ -153,30 +155,39 @@ void resolverEmpatesPorTempo(Player listaParticipantes[], int numeroParticipante
 }
 
 /* exibe os resultados finais */
-void mostrarPlacar(Player players[], int n_jogadores) {
-    Player *competidor_atual;
-    int classif; /*variável para a classificação*/
+void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
+    int i, j;
 
-    /* ordena o array pela pontuação final (desempatada) e tempo de resposta
-     * é essencial ordenar a lista novamente após resolverEmpatesPorTempo()
-     * */
     ordenarPlacar(players, n_jogadores);
 
-    printf("\n\n###########################################\n");
-    printf("#### RESULTADO GERAL DO JOGO ####\n");
-    printf("###########################################\n\n");
-    
-    /* itera sobre a lista já ordenada e exibe */
-    for (classif = 0; classif < n_jogadores; classif++) {
-        competidor_atual = &players[classif];
+    printf("\n\n");
 
-        /* saída com variáveis não-padrão */
-        printf(" -> %2dº Lugar: %-20s (Total Acumulado: %3d | Tempo: %.2f segundos)\n",
-               classif + 1,
-               competidor_atual->nome,
-               competidor_atual->pontuacao_total,
-               competidor_atual->tempo_total);
+    /* ===== Cabeçalho ===== */
+    printf("%-15s", "Nome");
+    for (i = 0; i < rodada; i++) {
+        printf(" | %-15s", nomeCategoriaPorNumero(i));
+    }
+    printf(" | Total\n");
+
+    /* ===== Separador ===== */
+    printf("-----------------");
+    for (i = 0; i < rodada; i++) printf("-----------------");
+    printf("--------\n");
+
+    /* ===== Corpo ===== */
+    for (i = 0; i < n_jogadores; i++) {
+        Player *p = &players[i];
+
+        printf("%-15s", p->nome);
+
+        int total = 0; // total parcial das rodada já jogadas
+        for (j = 0; j < rodada; j++) {
+            printf(" | %15d", p->pontos_rodada[j]);
+            total += p->pontos_rodada[j];
+        }
+
+        printf(" | %5d\n", total);
     }
 
-    printf("\n###########################################\n");
+    printf("\n");
 }

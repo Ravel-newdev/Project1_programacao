@@ -25,14 +25,15 @@ int main(void)
         char letra = sortearLetra(usadas);
         printf("A letra dessa rodada é: %c\n", letra);
         
-        jogarRodada(players, n, letra);
+        jogarRodada(players, n, letra, rodada);
         // limparTela();
 	}
+
 	// fim do jogo
     limparTela();
     printf("===== FIM DO JOGO =====\n");
     resolverEmpatesPorTempo(players, n);
-    mostrarPlacar(players, n);
+    // mostrarPlacar(players, n);
 	
     return 0;
 }

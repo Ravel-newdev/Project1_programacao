@@ -27,3 +27,10 @@ const char* nomeCategoria(Categoria c)
 	
 	return lista_nomes[c];
 }
+
+const char* nomeCategoriaPorNumero(int c)
+{
+	char *lista_nomes[] = {"Nome de Pessoa", "Nome de Cidade", "Nome de Animal", "Nome de Comida", "Nome de Profissão"};
+	
+	return lista_nomes[c];
+}
