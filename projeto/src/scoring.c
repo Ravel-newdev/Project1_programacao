@@ -82,16 +82,18 @@ void calcularPontuacao(Player *players, int n_jogadores, Categoria cat) {
         respAtual = players[i].resposta;
         len = strlen(respAtual);
 
-        /* se não respondeu, ignora */
+        players[i].pontos = 0; // Pontos na rodada atual
+        players[i].pontos_rodada[cat] = 0; // Pontos na categoria atual
+
+        /* se não respondeu (len == 0), continua para o próximo jogador. */
         if (len == 0) {
-            players[i].pontos = 0;
             continue;
         }
 
         /* conta quantas pessoas deram exatamente a mesma resposta, case insensitive */
         duplicatas = 0;
         for (k = 0; k < n_jogadores; k++) {
-            if (stringsIguais(respAtual, players[k].resposta)) {
+            if (strlen(players[k].resposta) > 0 && stringsIguais(respAtual, players[k].resposta)) {
                 duplicatas++;
             }
         }
@@ -155,22 +157,25 @@ void resolverEmpatesPorTempo(Player listaParticipantes[], int numeroParticipante
 }
 
 /* exibe os resultados finais */
-void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
+void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria ordem_categorias[]) {
     int i, j;
+    Categoria cat_atual;
 
     ordenarPlacar(players, n_jogadores);
 
     printf("\n\n");
 
     /* ===== Cabeçalho ===== */
-    printf("%-15s", "Nome");
+    printf("%-17s", "Nome");
     for (i = 0; i < rodada; i++) {
-        printf(" | %-15s", nomeCategoriaPorNumero(i));
+        // Usa o array de ordem para saber qual categoria foi jogada na rodada 'i'
+        cat_atual = ordem_categorias[i]; 
+        printf(" | %-15s", nomeCategoria((Categoria)cat_atual));
     }
     printf(" | Total\n");
 
     /* ===== Separador ===== */
-    printf("-----------------");
+    printf("-------------------");
     for (i = 0; i < rodada; i++) printf("-----------------");
     printf("--------\n");
 
@@ -178,15 +183,14 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
     for (i = 0; i < n_jogadores; i++) {
         Player *p = &players[i];
 
-        printf("%-15s", p->nome);
-
-        int total = 0; // total parcial das rodada já jogadas
+        printf("%-17s", p->nome);
+        
         for (j = 0; j < rodada; j++) {
-            printf(" | %15d", p->pontos_rodada[j]);
-            total += p->pontos_rodada[j];
+            cat_atual = ordem_categorias[j];
+            printf(" | %15d", p->pontos_rodada[cat_atual]); 
         }
 
-        printf(" | %5d\n", total);
+        printf(" | %5d\n", p->pontuacao_total);
     }
 
     printf("\n");

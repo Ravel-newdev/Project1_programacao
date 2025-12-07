@@ -16,19 +16,13 @@ Categoria sortearCategoria(int usadas[])
 
 	if (count == 0) return CAT_TOTAL;
 
-	/* limita o número sorteado de 0 a count-1 */
 	indice = rand() % count;
+	usadas[disponiveis[indice]] = 1;
+
 	return (Categoria)disponiveis[indice];
 }
 
 const char* nomeCategoria(Categoria c)
-{
-	char *lista_nomes[] = {"Nome de Pessoa", "Nome de Cidade", "Nome de Animal", "Nome de Comida", "Nome de Profissão"};
-	
-	return lista_nomes[c];
-}
-
-const char* nomeCategoriaPorNumero(int c)
 {
 	char *lista_nomes[] = {"Nome de Pessoa", "Nome de Cidade", "Nome de Animal", "Nome de Comida", "Nome de Profissão"};
 	

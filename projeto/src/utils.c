@@ -5,11 +5,6 @@
 #include <time.h>
 #include "../include/utils.h"
 
-/*inicializa a semente do rand baseada no relógio */
-void setupRandom() {
-    srand((unsigned int)time(NULL));
-}
-
 /*retorna int entre [min, max] */
 int sortearNumero(int min, int max) {
     int range = max - min + 1; /*formula alternativa: min + (rand % range) */
