@@ -3,7 +3,7 @@
 
 char sortearLetra(int usadas[])
 {
-	char letras[] = "ABCDEFGHIJLMNOPQRSTUVZ";
+	char letras[] = "ABCDEFGHIJLMNOPQRSTUVXZ";
 	int quantidadeLetras = 23;
 	int disponiveis[quantidadeLetras];
 	int count = 0;
