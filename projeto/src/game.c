@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
-#include "game.h"
-#include "player.h"
-#include "input.h"
+#include "../include/game.h"
+#include "../include/player.h"
+#include "../include/input.h"
 
 const char letras_validas[] = {
     'A','B','C','D','E','F','G','H','I','J','L','M',
