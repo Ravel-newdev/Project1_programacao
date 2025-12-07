@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-#include "player.h"
-#include "round.h"
-#include "letters.h"
-#include "categories.h"
-#include "screen.h"
+#include "../include/player.h"
+#include "../include/round.h"
+#include "../include/letters.h"
+#include "../include/categories.h"
+#include "../include/screen.h"
 int main(void)
 {
 	/* seed para gerar números pseudo-aletórios */
