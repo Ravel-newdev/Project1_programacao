@@ -7,6 +7,7 @@ void removeNewline(char *str);
 void flushStdin();
 void toUpperCase(char *s);
 int temEspaco(const char *s);
+void tratarNomePessoa(char *nome);
 
 /* funções de Lógica e Jogo*/
 int comecaComLetra(const char *str, char letra);

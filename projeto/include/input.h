@@ -4,6 +4,6 @@
 #include "player.h"
 
 void lerNomeValido(char *dest);
-void lerRespostaValida(Player *p, char letra_sorteada);
+void lerRespostaValida(Player *p, char letra_sorteada, int idx_categoria);
 
 #endif

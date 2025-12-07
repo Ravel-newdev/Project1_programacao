@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "input.h"
+#include "../include/input.h" 
 #include "player.h"
 
 #define MAX_NOME 12
@@ -45,7 +45,7 @@ void nomecomposto(char *str){
     }
 }
 /* lê a resposta válida (de começar com a letra sorteada e o tamanho da palavra); */
-void lerRespostaValida(Player *p, char letra_sorteada){
+void lerRespostaValida(Player *p, char letra_sorteada, int idx_categoria){
     char buffer[300];
 
     while (1)
@@ -68,10 +68,10 @@ void lerRespostaValida(Player *p, char letra_sorteada){
             continue;
         }
         /* categoria de pessoas precisa ser adequada apenas uma palavra; */
-        if(p -> categoria_atual == 0){
+        if(idx_categoria == 0){
             tratarNomePessoa(buffer);
         }
-        strcpy(p -> resposta_atual, buffer);
+        strcpy(p -> resposta, buffer);
         return;
         }
     }

@@ -49,12 +49,21 @@ int temEspaco(const char *s) {
 }
 
 
+void tratarNomePessoa(char *nome) {
+    /*garantir que apenas a primeira letra seja maiúscula, */
+    /*ou remove espaços extras, dependendo da regra */
+    if (nome[0] != '\0') {
+        nome[0] = toupper((unsigned char)nome[0]);
+    }
+    /* Lógica adicional pode ser adicionada aqui. */
+}
+
 /* ver se uma string começa com um caractere específico, case-insensitive */
 int comecaComLetra(const char *str, char letra) {
     if (!str || *str == '\0') {
         return 0; /* String vazia ou nula */
     }
     
-    /* compara o primeiro caractere da string (em maiúscula) com a letra (em maiúscula) */
+    /* compara o primeiro caractere da string em maiúscula com a letra em maiúscula */
     return (toupper((unsigned char)*str) == toupper((unsigned char)letra));
 }
