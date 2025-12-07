@@ -21,19 +21,10 @@ static int stringsIguais(const char *s1, const char *s2) {
 }
 
 
-/* funções auxiliares de ordenação */
+/* funções auxiliar de ordenação */
 
-/* troca o conteúdo de duas structs player na memória. */
-/* nota: essa funçãó é realmente necessária? o swap de ordenarPlacarn já ocorre sem função auxiliar */
-static void trocarJogadores(Player *p1, Player *p2) {
-    Player temp = *p1;
-    *p1 = *p2;
-    *p2 = temp;
-}
+/* ordena os jogadores por pontuação total decrescente e tempo crescente para desempate */
 
-/* ordena os jogadores por pontuação total decrescente e tempo crescente para desempate
- * chama a função trocarJogadores internamente.
- * */
 static void ordenarPlacar(Player *lista, int n_elementos) {
     int i, j;
     
