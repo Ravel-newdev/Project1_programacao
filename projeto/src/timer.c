@@ -6,12 +6,12 @@ static time_t g_start_time;
 
 /* calcula o tempo disponível para o jogador */
 
-int getTempoLimite(int totalJogadores, int indiceJogador) {
+int getTempoLimite(int posicao, int total_jogadores) {
     /* a logica: (4 + N - index) * 2 evita operações redundantes
      * mantendo explícito para clareza, mudando a ordem dos fatores 
      * */
-    int bonus_jogadores = totalJogadores * 2;
-    int penalidade_ordem = indiceJogador * 2;
+    int bonus_jogadores = total_jogadores * 2;
+    int penalidade_ordem = posicao * 2;
     
     int tempo_calculado = 8 + bonus_jogadores - penalidade_ordem;
 
