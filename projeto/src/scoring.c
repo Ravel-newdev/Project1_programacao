@@ -157,8 +157,9 @@ void resolverEmpatesPorTempo(Player listaParticipantes[], int numeroParticipante
 }
 
 /* exibe os resultados finais */
-void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
+void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria ordem_categorias[]) {
     int i, j;
+    Categoria cat_atual;
 
     ordenarPlacar(players, n_jogadores);
 
@@ -167,7 +168,9 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
     /* ===== Cabeçalho ===== */
     printf("%-15s", "Nome");
     for (i = 0; i < rodada; i++) {
-        printf(" | %-15s", nomeCategoriaPorNumero(i));
+        // Usa o array de ordem para saber qual categoria foi jogada na rodada 'i'
+        cat_atual = ordem_categorias[i]; 
+        printf(" | %-15s", nomeCategoria((Categoria)cat_atual));
     }
     printf(" | Total\n");
 
@@ -181,10 +184,10 @@ void mostrarPlacar(Player players[], int n_jogadores, int rodada) {
         Player *p = &players[i];
 
         printf("%-15s", p->nome);
-
         
         for (j = 0; j < rodada; j++) {
-            printf(" | %15d", p->pontos_rodada[j]);
+            cat_atual = ordem_categorias[j];
+            printf(" | %15d", p->pontos_rodada[cat_atual]); 
         }
 
         printf(" | %5d\n", p->pontuacao_total);

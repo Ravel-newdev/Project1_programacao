@@ -11,6 +11,8 @@
 int main(void)
 {
     Player players[10];
+    Categoria ordem_categorias[CAT_TOTAL];
+    int usadas_cat[CAT_TOTAL] = {0};
     int usadas[23] = {0};
     int n;
     
@@ -32,8 +34,13 @@ int main(void)
         
         char letra = sortearLetra(usadas);
         printf("A letra dessa rodada é: %c\n", letra);
+
+        Categoria cat_sorteada = sortearCategoria(usadas_cat);
+        ordem_categorias[rodada] = cat_sorteada;
         
-        jogarRodada(players, n, letra, rodada);
+        jogarRodada(players, n, letra, cat_sorteada);
+        mostrarPlacar(players, n, rodada + 1, ordem_categorias);
+        pausar();
         // limparTela();
 	}
 

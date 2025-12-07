@@ -6,6 +6,6 @@
 
 void calcularPontuacao(Player players[], int n_jogadores, Categoria cat);
 void resolverEmpatesPorTempo(Player players[], int n_jogadores);
-void mostrarPlacar(Player players[], int n_jogadores, int rodada);
+void mostrarPlacar(Player players[], int n_jogadores, int rodada, Categoria ordem_categorias[]);
 
 #endif
