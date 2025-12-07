@@ -16,8 +16,9 @@ Categoria sortearCategoria(int usadas[])
 
 	if (count == 0) return CAT_TOTAL;
 
-	/* limita o número sorteado de 0 a count-1 */
 	indice = rand() % count;
+	usadas[disponiveis[indice]] = 1;
+
 	return (Categoria)disponiveis[indice];
 }
 
