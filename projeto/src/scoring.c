@@ -19,11 +19,10 @@ static int stringsIguais(const char *s1, const char *s2) {
 }
 
 
-/* funções auxiliares de ordenação */
+/* funções auxiliar de ordenação */
 
-/* ordena os jogadores por pontuação total decrescente e tempo crescente para desempate
- * chama a função trocarJogadores internamente.
- * */
+/* ordena os jogadores por pontuação total decrescente e tempo crescente para desempate */
+
 static void ordenarPlacar(Player *lista, int n_elementos) {
     int i, j;
     
