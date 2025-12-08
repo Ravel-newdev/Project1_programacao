@@ -2,7 +2,7 @@
 
 Composicão da equipe:
 <ul>
-    <li></li>
+    <li>Ravel Costa de Araújo - 568026</li>
     <li>Arthur Pereira dos Santos - 579364</li>
     <li>Mateus Nascimento da Mota - 571044</li>
 </ul>
